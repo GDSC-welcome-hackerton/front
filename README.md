@@ -59,7 +59,7 @@
 <td style="text-align:left">Project Manager, Frontend Develop</td>
 <td style="text-align:left">hellllo3627@pukyong.ac.kr</td>
 <td style="text-align:left"><a href="https://github.com/doongu">
-<img src="http://img.shields.io/badge/pknu js-655ced?style=social&logo=github&color=informational" style="height : auto; margin-left : 10px; margin-right : 10px;"/>
+<img src="http://img.shields.io/badge/doongu-655ced?style=social&logo=github&color=informational" style="height : auto; margin-left : 10px; margin-right : 10px;"/>
 </a></td>
 </tr>
  <tr>
@@ -68,7 +68,7 @@
 <td style="text-align:left">UI/UX Design and Develop</td>
 <td style="text-align:left">ljj020304@pukyong.ac.kr</td>
 <td style="text-align:left"><a href="https://github.com/o-jeong">
-<img src="http://img.shields.io/badge/o-jeong-655ced?style=social&logo=github&color=informational" style="height : auto; margin-left : 10px; margin-right : 10px;"/>
+<img src="http://img.shields.io/badge/o_jeong-655ced?style=social&logo=github&color=informational" style="height : auto; margin-left : 10px; margin-right : 10px;"/>
 </a></td>
 </tr>
 </tbody>
