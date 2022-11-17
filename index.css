@@ -1,0 +1,124 @@
+body {
+    padding: 0px;
+    margin: 0px;
+}
+.bg {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  margin: 0px auto;
+  position: relative;
+}
+video {
+    width: 100%;
+    object-fit: cover;
+}
+.text {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.text p {
+    margin-right: 70px;
+    text-align: right;
+    font-size: 50px;
+    color: #D9D9D9;
+    
+}
+
+.wrapper {
+  height: 10vh;
+  display: grid;
+  place-items: center;
+}
+
+
+.typing-demo {
+  margin-right: 20px;
+  text-align: right;
+  font-size: 50px;
+  color: #D9D9D9;
+  text-shadow: -1px 0px #D9D9D9, 0px 1px #D9D9D9, 1px 0px #D9D9D9, 0px -1px #D9D9D9;
+  width: 21ch;
+  animation: typing 2s steps(22), blink .5s step-end infinite alternate;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 3px solid;
+  font-size: 60;
+}
+
+@keyframes typing {
+  from {
+    width: 0
+  }
+}
+    
+@keyframes blink {
+  50% {
+    border-color: transparent
+  }
+}
+
+
+
+button {
+  display: block;
+  position: relative;
+  float: right;
+  width: 120px;
+  padding: 0;
+  margin: 10px 500px 10px 0;
+}
+
+
+@keyframes ring {
+  0% {
+      width: 30px;
+      height: 30px;
+      opacity: 1;
+  }
+  100% {
+      width: 300px;
+      height: 300px;
+      opacity: 0;
+  }
+}
+
+.w-btn-neon2 {
+  position: relative;
+  border: none;
+  min-width: 200px;
+  min-height: 50px;
+  background: linear-gradient(
+      90deg,
+      rgb(224, 255, 251) 0%,
+      rgb(190, 255, 249) 100%
+  );
+  border-radius: 1000px;
+  color: darkslategray;
+  cursor: pointer;
+  box-shadow: 12px 12px 24px rgba(147, 214, 208, 0.64);
+  font-weight: 700;
+  transition: 0.3s;
+}
+
+
+.w-btn-neon2:hover {
+  transform: scale(1.2);
+}
+
+.w-btn-neon2:hover::after {
+  content: "";
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
+  border: 6px solid #93f4e1;
+  position: absolute;
+  z-index: -1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: ring 1.5s infinite;
+}
