@@ -1,5 +1,4 @@
 let map;
-let marker_s, marekr_e;
 let markerLayer = [];
 let drawInfoArr = [];
 let RandomLocation = [];
@@ -10,47 +9,9 @@ let endX;
 let endY;
 let startSearchList;
 let endSearchList;
-let polyline;
 
 function GetRandomNumber(start, end) {
   return Math.floor(Math.random() * (end - start + 1)) + start;
-}
-
-async function ChangeCor() {
-  for (let i = 0; i < RandomLocation.length; i++) {
-    let tempBuildName = await $.ajax({
-      method: "GET",
-      url: "https://apis.openapi.sk.com/tmap/geo/reversegeocoding?version=1&format=json&callback=result",
-      async: false,
-      data: {
-        appKey: "l7xx22ccc674c2f14345858cc50fac566024",
-        coordType: "WGS84GEO",
-        addressType: "A10",
-        lon: RandomLocation[i][1],
-        lat: RandomLocation[i][0],
-      },
-      error: function (request, status, error) {
-        console.log(
-          "code:" +
-            request.status +
-            "\n" +
-            "message:" +
-            request.responseText +
-            "\n" +
-            "error:" +
-            error
-        );
-      },
-    });
-    RandomBuilding.splice(
-      i + 1,
-      0,
-      tempBuildName["addressInfo"]["ri"] +
-        " " +
-        tempBuildName["addressInfo"]["roadName"]
-    );
-  }
-  console.log(RandomBuilding);
 }
 
 function initTmap() {
@@ -67,35 +28,31 @@ function initTmap() {
 }
 
 function setTest() {
-  setStart(startSearchList[0][1], startSearchList[0][2]);
-  setEnd(endSearchList[0][1], endSearchList[0][2]);
+  setStartEnd(startSearchList[0][1], startSearchList[0][2], "s");
+  setStartEnd(endSearchList[0][1], endSearchList[0][2], "e");
   RandomBuilding = [startSearchList[0][0], endSearchList[1][0]];
 }
 
-function setStart(x, y) {
+function setStartEnd(x, y, flag) {
   // 2. 출발지 설정
-
-  startX = x;
-  startY = y;
-  marker_s = new Tmapv2.Marker({
-    position: new Tmapv2.LatLng(startX, startY),
-    icon: "http://tmapapi.sktelecom.com/upload/tmap/marker/pin_r_m_s.png",
+  if (flag == "s"){
+	startX = x;
+	startY = y;
+  
+  }
+  if (flag == "e"){
+	endX = x;
+	endY = y;
+  }
+ 
+    new Tmapv2.Marker({
+    position: new Tmapv2.LatLng(x, y),
+    icon: "http://tmapapi.sktelecom.com/upload/tmap/marker/pin_r_m_"+ flag + ".png",
     iconSize: new Tmapv2.Size(24, 38),
     map: map,
   });
 }
 
-function setEnd(x, y) {
-  // 3. 도착지 설정
-  endX = x;
-  endY = y;
-  marker_e = new Tmapv2.Marker({
-    position: new Tmapv2.LatLng(endX, endY),
-    icon: "http://tmapapi.sktelecom.com/upload/tmap/marker/pin_r_m_e.png",
-    iconSize: new Tmapv2.Size(24, 38),
-    map: map,
-  });
-}
 
 async function markingMap() {
   document.getElementsByClassName("loadBox")[0].style.display = "block";
@@ -167,7 +124,7 @@ function markerLine() {
   // 5. 마킹 연결
   var headers = {};
   headers["appKey"] = "l7xx22ccc674c2f14345858cc50fac566024";
-
+  console.log(startX,startY,endX,endY)
   $.ajax({
     type: "POST",
     headers: headers,
@@ -253,66 +210,24 @@ function markerLine() {
   ChangeCor();
 }
 
-/////////
-///////// 아래는 검색시 List반환
-/////////
-
-function getStartSearchList() {
-  $("#btn_select").click(function () {
-    startSearchList = [];
-    var searchKeyword = $("#searchKeyword").val();
-    $.ajax({
-      method: "GET",
-      url: "https://apis.openapi.sk.com/tmap/pois?version=1&format=json&callback=result",
-      async: false,
-      data: {
-        appKey: "l7xx22ccc674c2f14345858cc50fac566024",
-        searchKeyword: searchKeyword,
-        resCoordType: "EPSG3857",
-        reqCoordType: "WGS84GEO",
-        count: 5,
-      },
-      success: function (response) {
-        var resultpoisData = response.searchPoiInfo.pois.poi;
-
-        var innerHtml = ""; // Search Reulsts 결과값 노출 위한 변수
-        var positionBounds = new Tmapv2.LatLngBounds(); //맵에 결과물 확인 하기 위한 LatLngBounds객체 생성
-
-        for (var k in resultpoisData) {
-          var noorLat = Number(resultpoisData[k].noorLat);
-          var noorLon = Number(resultpoisData[k].noorLon);
-          var pointCng = new Tmapv2.Point(noorLon, noorLat);
-          var projectionCng = new Tmapv2.Projection.convertEPSG3857ToWGS84GEO(
-            pointCng
-          );
-          var lat = projectionCng._lat;
-          var lon = projectionCng._lng;
-          var name = resultpoisData[k].name;
-          startSearchList.push([name, lat, lon]);
-        }
-
-        console.log(startSearchList);
-      },
-      error: function (request, status, error) {
-        console.log(
-          "code:" +
-            request.status +
-            "\n" +
-            "message:" +
-            request.responseText +
-            "\n" +
-            "error:" +
-            error
-        );
-      },
-    });
-  });
-}
 
 function getEndSearchList() {
-  $("#btn_select_end").click(function () {
-    endSearchList = [];
-    var searchKeyword = $("#searchKeyword_end").val();
+
+  $("#btn_select").click(function () {
+	getStartEndSearchList("start", "#searchKeyword")
+	console.log(2);
+});
+
+$("#btn_select_end").click(function () {
+    getStartEndSearchList("end", "#searchKeyword_end")
+	console.log(1);  
+});
+}
+
+function getStartEndSearchList(flag, keyword){
+	tempSearchList = [];
+
+    var searchKeyword = $(keyword).val();
     $.ajax({
       method: "GET",
       url: "https://apis.openapi.sk.com/tmap/pois?version=1&format=json&callback=result",
@@ -326,7 +241,10 @@ function getEndSearchList() {
       },
       success: function (response) {
         var resultpoisData = response.searchPoiInfo.pois.poi;
-
+		if(flag == "start"){
+			var innerHtml = ""; 
+			var positionBounds = new Tmapv2.LatLngBounds();
+		}
         for (var k in resultpoisData) {
           var noorLat = Number(resultpoisData[k].noorLat);
           var noorLon = Number(resultpoisData[k].noorLon);
@@ -337,10 +255,17 @@ function getEndSearchList() {
           var lat = projectionCng._lat;
           var lon = projectionCng._lng;
           var name = resultpoisData[k].name;
-          endSearchList.push([name, lat, lon]);
+          tempSearchList.push([name, lat, lon]);
         }
-
-        console.log(endSearchList);
+		if (flag == "start"){
+			startSearchList = tempSearchList
+			console.log("startSearchList")
+			console.log(startSearchList)
+		} else if (flag == "end"){
+			endSearchList = tempSearchList
+			console.log("startSearchList")
+			console.log(endSearchList)
+		}
       },
       error: function (request, status, error) {
         console.log(
@@ -355,12 +280,7 @@ function getEndSearchList() {
         );
       },
     });
-  });
 }
-
-//
-// 아래는
-//
 
 async function ChangeCor() {
   for (let i = 0; i < RandomLocation.length; i++) {
