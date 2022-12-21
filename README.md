@@ -1,28 +1,21 @@
-![header](https://capsule-render.vercel.app/api?type=wave&color=auto&height=135&section=header&text=&fontSize=90&fontAlignY=30&)
+![waving](https://capsule-render.vercel.app/api?type=waving&height=200&text=🤔%20기사님%20어디가세요??%20🤔&fontAlign=50&fontAlignY=40&color=30A9DE&fontSize=40)
 
-<h1>기사님 어디가세요??</h1>
-<h6>놀러와 해커톤 11조입니다.</h6>
-
+<h2>🔍 문제 인식</h2>
+<hr> 급격히 상승하는 물가 속에, 택시 기사님들의 임금은 항상 물가에 비해 낮은 소득 수준을 보여줍니다. 이러한 택시 기사님들의 고충을 이해하고 이로 발생하는 사회 문제를 해결하고자 하였습니다.<br></br>
+<p align="center"><img src="./taxi.png" width="400"/></p>
+<br></br><h2>📱 서비스 소개</h2> <hr>
+SMAP은 출발지와 목적지를 입력하면 랜덤 최장 경로를 보여주는 서비스입니다 !<br></br>
+<p align="center"><img src="./service.gif" width="400"/></p>
  <br></br>
-<h2> 어떻게 만들었나요? </h2>
-<!-- <h6>
-    부경대학교 컴퓨터공학과 4명에서 '웹 프로그래밍'수업을 통해 만들었어요. 다양한 도서 제공 공공 API와 JS를 통한 크롤러로 만들었어요 !
-</h6> -->
- <!-- <p align = "center"><img src="https://img.shields.io/badge/HTML-3766AB?style=for-the-badge&logo=HTML&logoColor=white"/></a> </a>&nbsp <img src="https://img.shields.io/badge/CSS-3766AB?style=for-the-badge&logo=CSS&logoColor=white"/></a> </a>&nbsp<img src="https://img.shields.io/badge/Javascript-3766AB?style=for-the-badge&logo=Javascript&logoColor=white"/></p>
+ <h2>🔗 서비스 이용하기</h2><hr>
+<a href="https://gdsc-welcome-hackerton.github.io/front/index.html ">https://gdsc-welcome-hackerton.github.io/front/index.html </a>
+<br></br><br></br>
+<h2>🏃‍♂️ 놀러와요 해커톤</h2><hr>
+SMAP은 <b>'쓸데없지만 창의적인 서비스 만들기'</b>를 주제로 한 GDSC의 <b>'놀러와요 해커톤'</b> 대회에 참여한 결과입니다.
+위와 같이 쓸데 없는 서비스를 재미있는 컨셉으로 만들어내 해커톤에서 2등이라는 결과를 얻었습니다 !
+<br></br><br></br>
+<h2>🛠️ 팀 구성 </h2><hr>
 
- <br></br>
-
-<h2> 결과물 확인하기 </h2>
-<h6>
-    코드와 함께 첨부되어 있는 ppt와 hwp를 확인해보시면 됩니다 ! 
-</h6>
-
-<br></br>
-
-
-</h2> Team Information <a href="https://github.com/doongu/a-book-near-you/blob/master/License"><img alt="GitHub" src="https://img.shields.io/github/license/osamhack2020/Web_Drawing-chat-consulation_Stones-in-greenhouse"></a></h2> -->
-
-<!--  아래는 Team INFORMATION 표-->
 
  <table>
 <thead>
@@ -72,12 +65,13 @@
 </a></td>
 </tr>
 </tbody>
-</table>
-
-
+</table><hr>
+<h3 align="center">📚 Stacks</h3>
+<p align="center"><img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=white" height="20" align="center">
+<img src="https://img.shields.io/badge/flask-000000?style=for-the-badge&logo=flask&logoColor=white" height="20" align="center"></p><hr>
+<h3 align="center">🗂️ License</h3><p align="center"><img alt="GitHub" src="https://img.shields.io/github/license/osamhack2020/Web_Drawing-chat-consulation_Stones-in-greenhouse" align="center"></a></p>
 
 <br></br>
 
+![waving](https://capsule-render.vercel.app/api?type=waving&height=200&text=🚕💨💨💨&fontAlign=50&fontAlignY=70&color=30A9DE&fontSize=40&section=footer)
 
-
-![header](https://capsule-render.vercel.app/api?type=wave&color=auto&height=135&section=footer&fontSize=90)
